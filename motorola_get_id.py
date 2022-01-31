@@ -33,7 +33,9 @@ def killer(): # this is necessary because stdout.read() do a bucle if the phone 
     global code
     import time
     time.sleep(5)
-    if code.isAlive(): # if exists the thread
+#    if code.isAlive(): # if exists the thread [bug]
+    if code.is_alive(): # if exists the thread [on python 3.10
+
         code._Thread__stop() # kill thread
         message= 'Error Desconocido, Intenta ejecutar este archivo donde este el fastboot o agregalo a la consola'
         myfile = open('motorola_get_id_Error.log','w')
